@@ -1,0 +1,106 @@
+body, html, * {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+// Variáveis
+$borda-w: 1px;
+$borda-cor: #EAEAEA;
+
+$bg-cor-titulo: #00A5E1;
+$fonte-cor-titulo: #ffffff;
+
+$bg-cor-conteudo: #ffffff;
+$bg-cor-even: #ffffff;
+$bg-cor-odd: #eeeeee;
+
+// comum
+.numero {
+    text-align: right;
+    display: block;
+}
+
+.ui-tvc-tabeladados-conteudo {
+    overflow-y: scroll;
+    td {
+        vertical-align: top;
+        span {
+            display: block;
+        }
+    }
+}
+.ui-tvc-tabeladados-coluna-congelada {
+    padding-bottom: 17px;
+}
+.ui-tvc-container-tabeladados {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.ui-tvc-tabeladados-complementar {
+    position: absolute;
+    top: 0px;
+}
+
+.ui-tvc-tabeladados-scroll-titulo {
+    overflow: hidden;
+    &-box {
+    }
+}
+
+.ui-tabeladados-scroll {
+    &-corpo {
+        overflow: auto;
+        box-sizing: border-box;
+    }
+    &-box {
+        position: relative;
+    }
+}
+
+// clear
+.ui-tvc-clearfix:before,
+.ui-tvc-clearfix:after {
+    content: "";
+    display: table;
+}
+.ui-tvc-clearfix:after {
+    clear: both;
+}
+.ui-tvc-clearfix {
+    zoom: 1;
+}
+
+// tabela de dados
+.ui-tvc-tabeladados {
+    %celulas {
+        border-color: inherit;
+        box-sizing: border-box;
+        padding: .25em .5em;
+        border-width: $borda-w;
+        border-style: solid;
+        font-weight: normal;
+        text-align: left;
+        display: table-cell;
+    }
+    &-titulo > tr > th,
+    &-rodape > tr > td {
+        @extend %celulas;
+        background-color: $bg-cor-titulo;
+        border-color: $borda-cor;
+        color: $fonte-cor-titulo;
+    }
+    &-conteudo > tr
+    {
+        &:nth-child(even) {
+            background-color: $bg-cor-even;
+        }
+        &:nth-child(odd) {
+            background-color: $bg-cor-odd;
+        }
+        > td {
+            @extend %celulas;
+            border-color: $borda-cor;
+        }
+    }
+}
